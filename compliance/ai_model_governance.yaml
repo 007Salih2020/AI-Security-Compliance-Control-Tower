@@ -1,0 +1,86 @@
+framework: AI Governance
+controls:
+  - control_id: AI-INV-001
+    control_name: Maintain inventory of AI systems and models
+    control_description: AI systems and models must be centrally inventoried with business context and deployment metadata.
+    evidence_required:
+      - Model registry export
+      - Discovery job results
+    risk_domain: AI Governance
+    remediation_expectation: Register all AI systems and retain discovery evidence.
+    keywords: ["inventory", "discovery", "registry"]
+    finding_ids: ["AI-AGENT-001"]
+    finding_categories: ["AI Governance"]
+    model_triggers: ["production", "used_by_agent"]
+  - control_id: AI-OWN-001
+    control_name: Assign accountable business and technical owner
+    control_description: Every production or material AI system must have named business and technical ownership.
+    evidence_required:
+      - Owner assignment
+      - Business unit registry
+    risk_domain: AI Governance
+    remediation_expectation: Resolve unknown ownership before production use continues.
+    keywords: ["owner", "business unit", "accountable"]
+    finding_ids: []
+    finding_categories: []
+    model_triggers: ["missing_owner"]
+  - control_id: AI-EVAL-001
+    control_name: Evaluate model output quality and safety
+    control_description: AI outputs require evaluation evidence before being trusted for business use.
+    evidence_required:
+      - Evaluation report
+      - Approval record
+    risk_domain: AI Assurance
+    remediation_expectation: Run factuality, safety, and usefulness checks for AI outputs and remediation suggestions.
+    keywords: ["evaluation", "quality", "safety"]
+    finding_ids: []
+    finding_categories: []
+    model_triggers: ["missing_evaluation"]
+  - control_id: AI-LOG-001
+    control_name: Enable monitoring and audit logs
+    control_description: AI systems and autonomous agents must emit sufficient logs to support review and investigations.
+    evidence_required:
+      - AI telemetry configuration
+      - Audit log retention
+    risk_domain: AI Observability
+    remediation_expectation: Turn on logging for models and agent actions before production use.
+    keywords: ["log", "audit", "monitoring"]
+    finding_ids: ["AI-AGENT-001", "AZURE-003"]
+    finding_categories: ["AI Governance", "Logging and Monitoring"]
+    model_triggers: ["missing_logging", "used_by_agent"]
+  - control_id: AI-APP-001
+    control_name: Require approval before production use
+    control_description: Production AI systems require explicit governance approval and documented business purpose.
+    evidence_required:
+      - Approval ticket
+      - Use-case documentation
+    risk_domain: AI Governance
+    remediation_expectation: Halt or constrain production use until approval and use-case evidence are complete.
+    keywords: ["approval", "production", "use case"]
+    finding_ids: []
+    finding_categories: []
+    model_triggers: ["needs_review", "production"]
+  - control_id: AI-AGENT-001
+    control_name: Apply policy controls to autonomous AI agents
+    control_description: Agent actions must be policy-checked, with destructive actions blocked and approvals enforced.
+    evidence_required:
+      - Policy decision logs
+      - Agent capability inventory
+    risk_domain: AI Governance
+    remediation_expectation: Place agent actions behind deterministic allow, deny, and approval rules.
+    keywords: ["agent", "policy", "action"]
+    finding_ids: ["AI-AGENT-001"]
+    finding_categories: ["AI Governance"]
+    model_triggers: ["used_by_agent"]
+  - control_id: AI-DATA-001
+    control_name: Classify data processed by AI systems
+    control_description: AI systems must classify personal, confidential, and regulated data handled in prompts and outputs.
+    evidence_required:
+      - Data classification record
+      - Data flow notes
+    risk_domain: Data Governance
+    remediation_expectation: Record and monitor the sensitivity of data handled by AI systems.
+    keywords: ["data", "classification", "personal", "confidential"]
+    finding_ids: []
+    finding_categories: []
+    model_triggers: ["sensitive_data"]

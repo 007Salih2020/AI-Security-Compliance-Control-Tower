@@ -1,0 +1,23 @@
+{
+  "trace_id": "TRACE-001",
+  "agent_name": "cloud-remediator-agent",
+  "environment": "production",
+  "actions": [
+    {
+      "action_id": "ACT-001",
+      "action": "read_resource",
+      "target": "/subscriptions/demo-sub/resourceGroups/rg-app/providers/Microsoft.Web/sites/secure-api-prod",
+      "status": "attempted",
+      "timestamp": "2026-06-01T09:05:00Z",
+      "sensitive": false
+    },
+    {
+      "action_id": "ACT-002",
+      "action": "delete_resource",
+      "target": "/subscriptions/demo-sub/resourceGroups/rg-app/providers/Microsoft.Storage/storageAccounts/publicdata001",
+      "status": "attempted",
+      "timestamp": "2026-06-01T09:06:00Z",
+      "sensitive": true
+    }
+  ]
+}

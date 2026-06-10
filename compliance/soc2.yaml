@@ -1,0 +1,26 @@
+framework: SOC 2 Placeholder
+controls:
+  - control_id: SOC2-CC6
+    control_name: Logical and Monitoring Controls
+    control_description: Placeholder mapping for logical access, monitoring, and change oversight.
+    evidence_required:
+      - Monitoring evidence
+      - Access review
+    risk_domain: Compliance
+    remediation_expectation: Demonstrate monitoring and access enforcement for critical systems.
+    keywords: ["monitor", "access", "change"]
+    finding_ids: ["AZURE-003", "GITHUB-001"]
+    finding_categories: ["Logging and Monitoring", "Secrets Exposure"]
+    model_triggers: ["missing_logging", "needs_review"]
+  - control_id: SOC2-CC7
+    control_name: Change Management and Vulnerability Response
+    control_description: Placeholder mapping for secure changes and vulnerability response.
+    evidence_required:
+      - Change approval
+      - Vulnerability remediation record
+    risk_domain: Compliance
+    remediation_expectation: Ensure critical changes and remediation workflows are documented and approved.
+    keywords: ["change", "vulnerability", "approval"]
+    finding_ids: ["SBOM-001"]
+    finding_categories: ["Software Supply Chain"]
+    model_triggers: ["needs_review"]

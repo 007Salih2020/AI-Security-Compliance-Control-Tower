@@ -1,0 +1,27 @@
+policy_name: ControlLens AI Governance Baseline
+default_decision: require_approval
+rules:
+  - rule_id: GOV-001
+    actions: ["delete_resource", "drop_table", "disable_logging"]
+    decision: deny
+    reason: Destructive actions and actions that weaken observability are blocked by default.
+  - rule_id: GOV-002
+    actions: ["apply_remediation"]
+    decision: require_approval
+    reason: Remediation execution requires human approval before changes are applied.
+  - rule_id: GOV-003
+    actions: ["approve_model"]
+    decision: require_approval
+    reason: Production AI model approvals must be reviewed by a human governance owner.
+  - rule_id: GOV-004
+    actions: ["export_sensitive_data"]
+    decision: deny
+    reason: Exporting sensitive data outside approved boundaries is not permitted.
+  - rule_id: GOV-005
+    actions: ["read_resource", "generate_remediation", "query_database", "register_model", "update_model_owner"]
+    decision: allow
+    reason: Read-only analysis and registry maintenance are allowed with logging.
+  - rule_id: GOV-006
+    actions: ["call_external_tool", "send_email"]
+    decision: require_approval
+    reason: External actions require explicit review because they can expand blast radius.

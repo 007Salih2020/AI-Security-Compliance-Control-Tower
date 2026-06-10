@@ -1,0 +1,39 @@
+[
+  {
+    "model_inventory_id": "MODEL-005",
+    "model_name": "security-remediation-agent",
+    "deployment_name": "cloud-remediator-agent",
+    "provider": "Internal AI",
+    "platform": "Agent Runtime",
+    "subscription_id": "demo-sub",
+    "resource_group": "rg-agents",
+    "region": "westeurope",
+    "endpoint": "https://agents.controllens.local/cloud-remediator-agent",
+    "model_family": "gpt-4o-mini",
+    "model_version": "2025-01-15",
+    "deployment_type": "agent_endpoint",
+    "environment": "production",
+    "owner": "Platform Automation",
+    "business_unit": "Cloud Operations",
+    "application_name": "Cloud Remediator",
+    "use_case": "Automated remediation suggestions",
+    "data_classification": "internal",
+    "processes_personal_data": false,
+    "processes_confidential_data": true,
+    "internet_accessible": false,
+    "private_network_enabled": true,
+    "logging_enabled": true,
+    "content_filtering_enabled": true,
+    "evaluation_available": true,
+    "red_team_tested": true,
+    "used_by_agent": true,
+    "approval_status": "approved",
+    "discovered_at": "2026-06-01T09:14:00Z",
+    "last_seen": "2026-06-01T09:14:00Z",
+    "source": "local_sample",
+    "tags": {
+      "tool_access": ["read_resource", "generate_remediation", "apply_remediation"],
+      "connected_data_sources": ["log-analytics", "cmdb"]
+    }
+  }
+]

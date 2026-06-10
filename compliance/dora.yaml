@@ -1,0 +1,38 @@
+framework: DORA
+controls:
+  - control_id: DORA-ICT-05
+    control_name: ICT Security Monitoring
+    control_description: Institutions must monitor ICT systems and retain evidence of control effectiveness.
+    evidence_required:
+      - Monitoring controls
+      - Operational dashboards
+    risk_domain: Resilience
+    remediation_expectation: Enable continuous logging and monitoring for critical production services.
+    keywords: ["monitor", "logging", "resilience"]
+    finding_ids: ["AZURE-003"]
+    finding_categories: ["Logging and Monitoring"]
+    model_triggers: ["missing_logging"]
+  - control_id: DORA-ICT-09
+    control_name: Backup and Restoration
+    control_description: Recovery capabilities and restoration controls must be demonstrable for critical ICT assets.
+    evidence_required:
+      - Backup policy
+      - Recovery configuration
+    risk_domain: Resilience
+    remediation_expectation: Enable recovery-friendly configuration and validate restoration capability.
+    keywords: ["recovery", "backup", "vault"]
+    finding_ids: ["AZURE-002"]
+    finding_categories: ["Secrets Management"]
+    model_triggers: []
+  - control_id: DORA-ICT-12
+    control_name: Vulnerability and Exposure Management
+    control_description: Material exposures should be identified, prioritized, and remediated with governance oversight.
+    evidence_required:
+      - Findings register
+      - Remediation status report
+    risk_domain: Risk Management
+    remediation_expectation: Prioritize externally exposed and critical vulnerabilities for remediation.
+    keywords: ["critical", "public", "vulnerability"]
+    finding_ids: ["AZURE-001", "SBOM-001"]
+    finding_categories: ["Storage Security", "Software Supply Chain"]
+    model_triggers: ["internet_accessible", "production"]

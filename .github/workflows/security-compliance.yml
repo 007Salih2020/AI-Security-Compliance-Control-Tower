@@ -1,0 +1,68 @@
+name: Security Compliance Demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Placeholder security scan
+        run: echo "Placeholder SAST scan completed."
+
+      - name: Local model discovery
+        run: python cli.py discover-models --source local
+
+      - name: Generate demo reports
+        run: python cli.py demo
+
+      - name: Upload demo Prowler artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-prowler
+          path: samples/prowler_azure_findings.json
+
+      - name: Upload demo SARIF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-sarif
+          path: samples/sarif_findings.json
+
+      - name: Upload demo SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-sbom
+          path: samples/sbom_findings.json
+
+      - name: Optional live Azure security sync
+        if: ${{ secrets.AZURE_TENANT_ID != '' && secrets.AZURE_CLIENT_ID != '' && secrets.AZURE_CLIENT_SECRET != '' && secrets.AZURE_SUBSCRIPTION_ID != '' }}
+        env:
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_AUTH_MODE: env
+        run: python cli.py sync-security --no-include-github-artifacts --no-include-prowler --no-generate-evidence
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: controllens-reports
+          path: reports/

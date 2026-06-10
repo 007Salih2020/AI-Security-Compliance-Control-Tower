@@ -1,0 +1,38 @@
+services:
+  api:
+    build: .
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "${API_PORT:-8000}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./reports:/app/reports
+      - ./data:/app/data
+
+  dashboard:
+    build: .
+    command: python -m streamlit run ui.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "${UI_PORT:-8503}:8501"
+    env_file:
+      - .env
+    depends_on:
+      - api
+    volumes:
+      - ./reports:/app/reports
+      - ./data:/app/data
+
+  prowler-runner:
+    image: prowlercloud/prowler:stable
+    profiles:
+      - live-security
+    env_file:
+      - .env
+    entrypoint:
+      - /bin/sh
+      - /workspace/docker/prowler-runner.sh
+    volumes:
+      - ./docker/prowler-runner.sh:/workspace/docker/prowler-runner.sh:ro
+      - ./data/prowler-output:/output
+    restart: "no"

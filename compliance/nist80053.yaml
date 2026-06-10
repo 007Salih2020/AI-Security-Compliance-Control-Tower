@@ -1,0 +1,74 @@
+framework: NIST 800-53
+controls:
+  - control_id: AU-2
+    control_name: Event Logging
+    control_description: Information systems must log defined events for security and operations monitoring.
+    evidence_required:
+      - Event logging standard
+      - Logging configuration export
+    risk_domain: Logging
+    remediation_expectation: Define and enable auditable events for critical services and AI platforms.
+    keywords: ["log", "audit", "diagnostic"]
+    finding_ids: ["AZURE-003"]
+    finding_categories: ["Logging and Monitoring"]
+    model_triggers: ["missing_logging"]
+  - control_id: AU-6
+    control_name: Audit Review, Analysis, and Reporting
+    control_description: Audit records must support review, correlation, and incident response.
+    evidence_required:
+      - SIEM or Log Analytics report
+      - Alert routing evidence
+    risk_domain: Logging
+    remediation_expectation: Centralize logs and establish review workflows for cloud and AI activity.
+    keywords: ["audit", "monitor", "review"]
+    finding_ids: ["AZURE-003", "AI-AGENT-001"]
+    finding_categories: ["Logging and Monitoring", "AI Governance"]
+    model_triggers: ["missing_logging", "used_by_agent"]
+  - control_id: RA-5
+    control_name: Vulnerability Monitoring and Scanning
+    control_description: Systems and code repositories must be scanned for vulnerabilities, exposed secrets, and configuration weaknesses.
+    evidence_required:
+      - Scan results
+      - Remediation tracking
+    risk_domain: Risk Detection
+    remediation_expectation: Run recurring scans and route findings into a managed backlog.
+    keywords: ["scan", "secret", "vulnerability"]
+    finding_ids: ["GITHUB-001", "SBOM-001"]
+    finding_categories: ["Secrets Exposure", "Software Supply Chain"]
+    model_triggers: []
+  - control_id: SC-7
+    control_name: Boundary Protection
+    control_description: Public exposure must be controlled and monitored.
+    evidence_required:
+      - Network architecture
+      - Access control settings
+    risk_domain: Network Security
+    remediation_expectation: Restrict external access paths and monitor exposed interfaces.
+    keywords: ["public", "boundary", "internet"]
+    finding_ids: ["AZURE-001"]
+    finding_categories: ["Storage Security"]
+    model_triggers: ["internet_accessible"]
+  - control_id: PL-2
+    control_name: System and Communications Protection Planning
+    control_description: Governance and security plans should be established for production systems and AI workloads.
+    evidence_required:
+      - AI governance plan
+      - Production approval records
+    risk_domain: Governance
+    remediation_expectation: Require planning and approvals before production AI model use.
+    keywords: ["approval", "governance", "production"]
+    finding_ids: ["AI-AGENT-001"]
+    finding_categories: ["AI Governance"]
+    model_triggers: ["needs_review", "production"]
+  - control_id: SI-2
+    control_name: Flaw Remediation
+    control_description: Identify and remediate defects and vulnerabilities promptly.
+    evidence_required:
+      - Patch or upgrade evidence
+      - Risk acceptance workflow
+    risk_domain: Vulnerability Management
+    remediation_expectation: Track remediation to closure for critical dependencies and services.
+    keywords: ["upgrade", "patch", "dependency"]
+    finding_ids: ["SBOM-001"]
+    finding_categories: ["Software Supply Chain"]
+    model_triggers: []

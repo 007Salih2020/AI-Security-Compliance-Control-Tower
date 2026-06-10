@@ -1,0 +1,50 @@
+framework: CIS Controls
+controls:
+  - control_id: CIS-07
+    control_name: Continuous Vulnerability Management
+    control_description: Organizations must continuously identify and remediate technical weaknesses.
+    evidence_required:
+      - Vulnerability scans
+      - Remediation SLA tracking
+    risk_domain: Vulnerability Management
+    remediation_expectation: Scan dependencies and infrastructure continuously and close critical gaps quickly.
+    keywords: ["vulnerability", "dependency", "scan"]
+    finding_ids: ["SBOM-001"]
+    finding_categories: ["Software Supply Chain"]
+    model_triggers: []
+  - control_id: CIS-08
+    control_name: Audit Log Management
+    control_description: Audit logs must be collected, protected, and reviewed.
+    evidence_required:
+      - Log coverage report
+      - Retention policy
+    risk_domain: Logging
+    remediation_expectation: Turn on logging and verify pipeline ingestion into central monitoring.
+    keywords: ["audit", "log", "retention"]
+    finding_ids: ["AZURE-003"]
+    finding_categories: ["Logging and Monitoring"]
+    model_triggers: ["missing_logging"]
+  - control_id: CIS-12
+    control_name: Network Infrastructure Management
+    control_description: Internet exposure should be controlled, monitored, and minimized.
+    evidence_required:
+      - Exposure inventory
+      - Access restrictions
+    risk_domain: Network Security
+    remediation_expectation: Eliminate unnecessary public exposure and validate access restrictions.
+    keywords: ["public", "network", "internet"]
+    finding_ids: ["AZURE-001"]
+    finding_categories: ["Storage Security"]
+    model_triggers: ["internet_accessible"]
+  - control_id: CIS-16
+    control_name: Application Software Security
+    control_description: Software development and repositories should be secured against exposed secrets and insecure practices.
+    evidence_required:
+      - Secret scanning output
+      - Repository policy controls
+    risk_domain: DevSecOps
+    remediation_expectation: Rotate secrets, clean history, and enforce repository scanning gates.
+    keywords: ["secret", "repository", "scan"]
+    finding_ids: ["GITHUB-001"]
+    finding_categories: ["Secrets Exposure"]
+    model_triggers: []

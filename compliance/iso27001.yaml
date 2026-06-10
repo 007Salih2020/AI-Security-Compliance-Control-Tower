@@ -1,0 +1,64 @@
+framework: ISO 27001
+controls:
+  - control_id: A.5.1
+    control_name: Policies for AI and information security
+    control_description: Approved policies must define how AI systems are governed, approved, logged, and monitored.
+    evidence_required:
+      - Approved AI governance policy
+      - Model approval workflow
+      - Owner assignment evidence
+    risk_domain: Governance
+    remediation_expectation: Establish and enforce AI policy, approval, and ownership requirements before production use.
+    keywords: ["policy", "governance", "approval", "owner", "agent"]
+    finding_ids: ["GITHUB-001", "AI-AGENT-001"]
+    finding_categories: ["Secrets Exposure", "AI Governance"]
+    model_triggers: ["missing_owner", "needs_review", "used_by_agent"]
+  - control_id: A.8.20
+    control_name: Network security
+    control_description: Networks and exposed services should be secured against unauthorized public access.
+    evidence_required:
+      - Network access review
+      - Public exposure exceptions
+    risk_domain: Cloud Security
+    remediation_expectation: Remove anonymous or public access and enforce least privilege connectivity.
+    keywords: ["public", "internet", "network", "storage"]
+    finding_ids: ["AZURE-001"]
+    finding_categories: ["Storage Security"]
+    model_triggers: ["internet_accessible"]
+  - control_id: A.8.24
+    control_name: Use of cryptography and protection of secrets
+    control_description: Secrets and cryptographic assets must be recoverable and protected from accidental deletion.
+    evidence_required:
+      - Key vault configuration export
+      - Backup and recovery configuration
+    risk_domain: Resilience
+    remediation_expectation: Enable soft delete, purge protection, and backup validation.
+    keywords: ["vault", "secret", "recovery"]
+    finding_ids: ["AZURE-002"]
+    finding_categories: ["Secrets Management"]
+    model_triggers: []
+  - control_id: A.12.4
+    control_name: Logging and monitoring
+    control_description: Security and operational logs must be enabled, retained, reviewed, and available for investigations.
+    evidence_required:
+      - Diagnostic logging settings
+      - Log retention configuration
+      - Monitoring dashboard or queries
+    risk_domain: Logging
+    remediation_expectation: Enable and retain diagnostic logs across cloud services and AI systems.
+    keywords: ["log", "monitor", "diagnostic", "audit"]
+    finding_ids: ["AZURE-003"]
+    finding_categories: ["Logging and Monitoring"]
+    model_triggers: ["missing_logging"]
+  - control_id: A.8.8
+    control_name: Management of technical vulnerabilities
+    control_description: Vulnerabilities in software components must be identified and remediated in a timely manner.
+    evidence_required:
+      - SBOM scan results
+      - Dependency remediation plan
+    risk_domain: Vulnerability Management
+    remediation_expectation: Remove critical vulnerable dependencies and enforce software composition analysis in CI/CD.
+    keywords: ["dependency", "vulnerability", "sbom"]
+    finding_ids: ["SBOM-001"]
+    finding_categories: ["Software Supply Chain"]
+    model_triggers: []

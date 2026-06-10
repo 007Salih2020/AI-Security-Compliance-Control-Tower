@@ -1,0 +1,12 @@
+[
+  {
+    "target_type": "finding",
+    "metric": "factuality",
+    "description": "The finding analysis should stay anchored to the original record."
+  },
+  {
+    "target_type": "model",
+    "metric": "security_relevance",
+    "description": "The model analysis should describe governance, logging, approval, and data sensitivity concerns."
+  }
+]
